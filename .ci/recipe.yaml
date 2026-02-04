@@ -1,27 +1,50 @@
-# APGer Recipe Template for NurOS Packages
-# Edit this file to define your package build configuration
-
 package:
-  name: "package-name"           # Package name (required)
-  version: "1.0.0"               # Package version (required)
-  type: "binary"                 # Type: binary, meta, library (required)
-  architecture: "x86_64"         # Architecture: x86_64, aarch64, any (required)
-  description: "Package description" # Short description (required)
-  maintainer: "Your Name <email@example.com>" # Maintainer info (required)
-  license: "GPL-3.0"             # License identifier (required)
-  homepage: "https://example.com" # Project homepage (optional)
-  tags: ["tag1", "tag2"]         # Tags for categorization (optional)
-  dependencies: []               # Runtime dependencies (optional)
-  conflicts: []                  # Conflicting packages (optional)
-  provides: []                   # Virtual packages provided (optional)
-  replaces: []                   # Packages replaced by this one (optional)
-  conf: []                       # Configuration files paths (optional)
+  name: "coreutils"
+  version: "9.8"
+  type: "binary"
+  architecture: "x86_64"
+  description: "GNU core utilities - basic file, shell and text manipulation utilities"
+  maintainer: "APGer <anmitali198@gmail.com>"
+  license: "GPL-3.0"
+  homepage: "https://www.gnu.org/software/coreutils/"
+  tags: ["gnu", "utilities", "core", "shell", "posix"]
+  dependencies: 
+    - "libc6"
+    - "libacl1"
+    - "libattr1"
+    - "libgmp10"
+    - "libselinux1"
+    - "libcap2"
+  conflicts: 
+    - "uutils-coreutils"
+    - "uutils"
+    - "busybox"
+    - "toybox"
+    - "sbase"
+    - "9base"
+  provides: ["coreutils"]
+  replaces: 
+  conf: []
 
 source:
-  url: "https://example.com/source.tar.xz" # Source archive URL (required)
+  url: "https://ftp.gnu.org/gnu/coreutils/coreutils-{{VERSION}}.tar.xz"
 
 build:
-  script: "./configure --prefix=/usr && make" # Build commands (required)
+  dependencies: 
+    - "build-essential"
+    - "libgmp-dev"
+    - "libattr1-dev"
+    - "libacl1-dev"
+    - "libselinux1-dev"
+    - "libcap-dev"
+    - "gettext"
+    - "texinfo"
+  script: |
+    ./configure \
+      --prefix=/usr \
+      --enable-install-program=arch,hostname \
+      --enable-no-install-program=kill,uptime
+    make -j$(nproc)
 
 install:
-  script: "make DESTDIR=\"$DESTDIR\" install" # Install commands to $DESTDIR (required)
+  script: "make DESTDIR=\"$DESTDIR\" install"
