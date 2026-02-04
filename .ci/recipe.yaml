@@ -1,6 +1,6 @@
 package:
   name: "coreutils"
-  version: "9.8"
+  version: "9.9"
   type: "binary"
   architecture: "x86_64"
   description: "GNU core utilities - basic file, shell and text manipulation utilities"
@@ -18,12 +18,10 @@ package:
   conflicts:
     - "uutils-coreutils"
     - "uutils"
-    - "busybox"
     - "toybox"
     - "sbase"
-    - "9base"
   provides: ["coreutils"]
-  replaces:
+  replaces: []
   conf: []
 source:
   url: "https://ftp.gnu.org/gnu/coreutils/coreutils-{{VERSION}}.tar.xz"
