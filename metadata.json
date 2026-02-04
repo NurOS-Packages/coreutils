@@ -1,0 +1,38 @@
+{
+  "name": "coreutils",
+  "version": "9.8",
+  "type": "binary",
+  "architecture": "x86_64",
+  "description": "GNU core utilities - basic file, shell and text manipulation utilities",
+  "maintainer": "APGer <anmitali198@gmail.com>",
+  "license": "GPL-3.0",
+  "tags": [
+    "gnu",
+    "utilities",
+    "core",
+    "shell",
+    "posix"
+  ],
+  "homepage": "https://www.gnu.org/software/coreutils/",
+  "dependencies": [
+    "libc6",
+    "libacl1",
+    "libattr1",
+    "libgmp10",
+    "libselinux1",
+    "libcap2"
+  ],
+  "conflicts": [
+    "uutils-coreutils",
+    "uutils",
+    "busybox",
+    "toybox",
+    "sbase",
+    "9base"
+  ],
+  "provides": [
+    "coreutils"
+  ],
+  "replaces": [],
+  "conf": []
+}

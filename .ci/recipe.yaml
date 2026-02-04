@@ -8,14 +8,14 @@ package:
   license: "GPL-3.0"
   homepage: "https://www.gnu.org/software/coreutils/"
   tags: ["gnu", "utilities", "core", "shell", "posix"]
-  dependencies: 
+  dependencies:
     - "libc6"
     - "libacl1"
     - "libattr1"
     - "libgmp10"
     - "libselinux1"
     - "libcap2"
-  conflicts: 
+  conflicts:
     - "uutils-coreutils"
     - "uutils"
     - "busybox"
@@ -23,14 +23,12 @@ package:
     - "sbase"
     - "9base"
   provides: ["coreutils"]
-  replaces: 
+  replaces:
   conf: []
-
 source:
   url: "https://ftp.gnu.org/gnu/coreutils/coreutils-{{VERSION}}.tar.xz"
-
 build:
-  dependencies: 
+  dependencies:
     - "build-essential"
     - "libgmp-dev"
     - "libattr1-dev"
@@ -45,6 +43,5 @@ build:
       --enable-install-program=arch,hostname \
       --enable-no-install-program=kill,uptime
     make -j$(nproc)
-
 install:
   script: "make DESTDIR=\"$DESTDIR\" install"
