@@ -1,6 +1,6 @@
 {
   "name": "coreutils",
-  "version": "9.8",
+  "version": "9.9",
   "type": "binary",
   "architecture": "x86_64",
   "description": "GNU core utilities - basic file, shell and text manipulation utilities",
@@ -25,10 +25,8 @@
   "conflicts": [
     "uutils-coreutils",
     "uutils",
-    "busybox",
     "toybox",
-    "sbase",
-    "9base"
+    "sbase"
   ],
   "provides": [
     "coreutils"
